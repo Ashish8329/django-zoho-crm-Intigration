@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -121,3 +124,10 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# zoho config
+ZOHO_CLIENT_ID=os.getenv("ZOHO_CLIENT_ID")
+ZOHO_CLIENT_SECRET=os.getenv("ZOHO_CLIENT_SECRET")
+ZOHO_REFRESH_TOKEN=os.getenv("ZOHO_REFRESH_TOKEN")
+ZOHO_REDIRECT_URI=os.getenv("ZOHO_REDIRECT_URI")
+ZOHO_API_BASE=os.getenv('ZOHO_API_BASE')
