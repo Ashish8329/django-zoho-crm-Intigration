@@ -1,7 +1,10 @@
 # leads/views.py
+import json
+
 import requests
 from django.conf import settings
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from rest_framework.decorators import api_view
 
@@ -76,3 +79,20 @@ def get_lead(request):
 
     except Exception as e:
         return error_response(str(e), status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@csrf_exempt
+def zoho_webhook(request):
+    if request.method == "POST":
+        try:
+            body_unicode = request.body.decode("utf-8")
+            if not body_unicode:
+                return JsonResponse({"error": "Empty payload"}, status=400)
+
+            data = json.loads(body_unicode)
+
+            # Process the event here TODO
+            return JsonResponse({"message": "Webhook received"}, status=200)
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON"}, status=400)
+    return JsonResponse({"error": "Invalid method"}, status=405)
