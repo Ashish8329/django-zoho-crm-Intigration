@@ -49,7 +49,6 @@ def get_lead(request):
     DRF View: Fetch leads from Zoho CRM with optional fields.
     Example: /api/get-lead/?fields=Email,Phone
     """
-    print(f"----------------")
     fields = request.query_params.get("fields", "")
 
     try:
@@ -61,13 +60,12 @@ def get_lead(request):
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
 
-        url = f"{settings.ZOHO_API_BASE}/crm/v2/Leads"
+        url = f"https://www.zohoapis.in/crm/v2/Leads"
         headers = {"Authorization": f"Zoho-oauthtoken {access_token}"}
         params = {}
 
         if fields:
             params["fields"] = fields
-        print(f"----------------{url}---------{headers}-")
         response = requests.get(url, headers=headers, params=params)
         if response.status_code == 200:
             return success_response(response.json())

@@ -44,7 +44,7 @@ def create_lead_in_zoho(name, email, phone):
         if not access_token:
             raise Exception("Access token missing in response")
 
-        url = f"{settings.ZOHO_API_BASE}/crm/v2/Leads"
+        url = f"https://www.zohoapis.in/crm/v2/Leads"
         headers = {
             "Authorization": f"Zoho-oauthtoken {access_token}",
             "Content-Type": "application/json",
