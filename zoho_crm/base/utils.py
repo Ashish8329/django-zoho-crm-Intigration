@@ -1,10 +1,10 @@
 import base64
+import os
 import uuid
 
+from django.conf import settings
 from rest_framework import status
 from rest_framework.response import Response
-import os
-from django.conf import settings
 
 
 def generate_short_uuid():
@@ -16,29 +16,14 @@ from rest_framework import status
 from rest_framework.response import Response
 
 
-def success_response(data=None, message="Success", request=None, extra_data={}):
-
-    result = {
-        "status": {"code": status.HTTP_200_OK, "message": message},
-        "data": data,
-    }
-
-    result.update(extra_data)
-    return Response(result)
-
-
-def error_response(
-    data=None,
-    message="Error",
-    status_code=None,
-    request=None,
-    code=status.HTTP_403_FORBIDDEN,
-):
-    if status_code:
-        code = status_code
+def success_response(data, message="Success", status_code=200):
     return Response(
-        {"status": {"code": code, "message": message}, "data": data}, status=code
+        {"status": True, "message": message, "data": data}, status=status_code
     )
+
+
+def error_response(message="Error", status_code=400):
+    return Response({"status": False, "message": message}, status=status_code)
 
 
 def get_report_file_path(filename):

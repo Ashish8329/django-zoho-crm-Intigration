@@ -10,9 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-from pathlib import Path
-from dotenv import load_dotenv
 import os
+from pathlib import Path
+
+from dotenv import load_dotenv
 
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,7 +41,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "crm"
+    "crm",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -126,8 +128,8 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # zoho config
-ZOHO_CLIENT_ID=os.getenv("ZOHO_CLIENT_ID")
-ZOHO_CLIENT_SECRET=os.getenv("ZOHO_CLIENT_SECRET")
-ZOHO_REFRESH_TOKEN=os.getenv("ZOHO_REFRESH_TOKEN")
-ZOHO_REDIRECT_URI=os.getenv("ZOHO_REDIRECT_URI")
-ZOHO_API_BASE=os.getenv('ZOHO_API_BASE')
+ZOHO_CLIENT_ID = os.getenv("ZOHO_CLIENT_ID")
+ZOHO_CLIENT_SECRET = os.getenv("ZOHO_CLIENT_SECRET")
+ZOHO_REFRESH_TOKEN = os.getenv("ZOHO_REFRESH_TOKEN")
+ZOHO_REDIRECT_URI = os.getenv("ZOHO_REDIRECT_URI")
+ZOHO_API_BASE = os.getenv("ZOHO_API_BASE")
