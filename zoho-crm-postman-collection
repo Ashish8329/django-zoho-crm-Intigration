@@ -1,0 +1,266 @@
+{
+	"info": {
+		"_postman_id": "4f4ccdef-7c2f-47aa-a494-6bf4ceb11977",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34213868",
+		"_collection_link": "https://brahma-team.postman.co/workspace/dj-zoho-crm-initgration~87d851ab-5924-46e2-aa91-cda6714e0bef/collection/34213868-4f4ccdef-7c2f-47aa-a494-6bf4ceb11977?action=share&source=collection_link&creator=34213868"
+	},
+	"item": [
+		{
+			"name": "get access token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "1000.M0IRVJY1KBP9ELAVMEFOGQUFBOAL6Q",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "f4eb0a4b84d64db797b7752e16a2eacc45ee7003a0",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://www.google.com/",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "1000.8515df1a791ccd9258b41f19be11a562.d8af949b43c7c263846cf184d2c262bb",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://accounts.zoho.in/oauth/v2/token",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"zoho",
+						"in"
+					],
+					"path": [
+						"oauth",
+						"v2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get leads",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.zohoapis.in/crm/v7/Leads?fields=Last_Name,Email,Created_Time",
+					"protocol": "https",
+					"host": [
+						"www",
+						"zohoapis",
+						"in"
+					],
+					"path": [
+						"crm",
+						"v7",
+						"Leads"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "Last_Name,Email,Created_Time"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get access token_2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "1000.M0IRVJY1KBP9ELAVMEFOGQUFBOAL6Q",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "f4eb0a4b84d64db797b7752e16a2eacc45ee7003a0",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "1000.d43d785ed0b78d180edc36c097127996.b5f19bc2c1722fb68dd510a4257eda0f",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://accounts.zoho.in/oauth/v2/token",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"zoho",
+						"in"
+					],
+					"path": [
+						"oauth",
+						"v2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get access tk",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/get-access-token/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"get-access-token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create lead",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "abc",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "a2@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "+911234567890",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/create-lead/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"create-lead",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "abc",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "a2@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "phone",
+							"value": "+911234567890",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all leads",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/get-lead/?fields=Last_Name,Email,Created_Time",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"get-lead",
+						""
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "Last_Name,Email,Created_Time"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
